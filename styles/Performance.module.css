@@ -1,0 +1,12 @@
+.clickButton{
+    margin: 20px 20px;
+    width: 80px;
+    height: 40px;
+    background-color: greenyellow;
+    border: none;
+    border-radius: 19px;
+    cursor: pointer;
+}
+.clickButton:hover{
+    background-color: green;
+}

@@ -1,8 +1,10 @@
+import styles from "../styles/Navbar.module.css";
+
 const Navbar = () => {
   return (
-    <div className="navbar">
+    <div className={styles.navbar}>
       <h1>Welcome to App Test</h1>
-      <div>Im an image</div>
+      <img src="/logo.png" alt="logo" className={styles.logo} />
     </div>
   );
 };

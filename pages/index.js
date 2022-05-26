@@ -1,19 +1,25 @@
 import Navbar from "../components/Navbar";
 import Link from "next/link";
-import "../styles/Home.module.css";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
-    <div className="main">
+    <div className={styles.main}>
       <Navbar></Navbar>
-      <div className="textbody">
+      <div className={styles.textbody}>
         An Experiment platform for detecting and testing performance measures as
         well as memory issues!
       </div>
-      <div className="linkbox">
-        <Link href="/network">Network</Link>
-        <Link href="/performance">Performance</Link>
-        <Link href="memory">Memory</Link>
+      <div className={styles.linkbox}>
+        <Link href="/network">
+          <a className={styles.linkitem}>Network</a>
+        </Link>
+        <Link href="/performance">
+          <a className={styles.linkitem}>Performance</a>
+        </Link>
+        <Link href="/memory">
+          <a className={styles.linkitem}>memory</a>
+        </Link>
       </div>
     </div>
   );

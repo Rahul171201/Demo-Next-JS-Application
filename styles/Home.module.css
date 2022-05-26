@@ -1,6 +1,26 @@
 .main{
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: red;
-  }
-  
+    align-items: center;
+    background-color: black;
+    color: white;
+}
+
+.textbody{
+  margin-top: 50px;
+}
+
+.linkbox{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.linkitem{
+  font-size: 24px;
+  margin: 30px;
+  text-decoration: none;
+  color: #00FFAB;
+}
