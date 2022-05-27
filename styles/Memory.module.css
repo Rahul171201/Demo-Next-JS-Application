@@ -1,0 +1,47 @@
+.memoryBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.addButton{
+    width: 100px;
+    height: 50px;
+    background-color: blue;
+    border-style: none;
+    border-radius: 9px;
+    color: white;
+    margin: 30px;
+    cursor: pointer;
+}
+
+.addButton:hover{
+    background-color: #001D6E;
+}
+
+.removeButton{
+    width: 100px;
+    height: 50px;
+    background-color: red;
+    border-style: none;
+    border-radius: 9px;
+    color: white;
+    margin: 30px;
+    cursor: pointer;
+}
+
+.removeButton:hover{
+    background-color: #B22727;
+}
+
+.textbox{
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    height: min-content;
+    border: 1px solid black;
+    margin: 20px;
+    justify-content: center;
+    align-items: center;
+}

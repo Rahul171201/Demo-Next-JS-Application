@@ -18,7 +18,7 @@ export default function Home() {
           <a className={styles.linkitem}>Performance</a>
         </Link>
         <Link href="/memory">
-          <a className={styles.linkitem}>memory</a>
+          <a className={styles.linkitem}>Memory</a>
         </Link>
       </div>
     </div>

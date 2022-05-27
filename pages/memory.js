@@ -1,36 +1,41 @@
-import styles from "../styles/Performance.module.css";
+import styles from "../styles/Memory.module.css";
+import Temp from "../components/Temp";
 import React, { useState } from "react";
+
+const arr = [];
 
 const Memory = () => {
   const [elementBox, setElementBox] = useState([]);
 
   const addElements = () => {
     const elementList = [];
-    for (let i = 0; i < 100; i++) {
-      const element = React.createElement("h1", { id: "ele" }, "Another Item");
-      console.log(element);
-      elementList.push(element);
+
+    for (let i = 0; i < 10000; i++) {
+      arr.push(<Temp></Temp>);
+      elementList.push(<Temp className={styles.temp}></Temp>);
     }
 
     setElementBox(elementList);
   };
 
   const removeElements = () => {
-    for (let i = 0; i < elementBox.length; i++) {
-      document.querySelector("#ele").remove();
-    }
-    console.log(elementBox.length);
+    setElementBox("");
   };
 
   return (
-    <div className={styles.memory}>
-      <button className={styles.addButton} onClick={addElements}>
-        Add
-      </button>
-      <button className={styles.removeButton} onClick={removeElements}>
-        Remove
-      </button>
-      {elementBox}
+    <div className={styles.memoryBox}>
+      <div className={styles.buttonBox}>
+        <button className={styles.addButton} onClick={addElements}>
+          Add
+        </button>
+        <button className={styles.removeButton} onClick={removeElements}>
+          Remove
+        </button>
+      </div>
+      <div className={styles.textbox}>
+        <div>Element List</div>
+        {elementBox}
+      </div>
     </div>
   );
 };

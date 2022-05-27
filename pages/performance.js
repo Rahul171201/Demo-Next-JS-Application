@@ -1,4 +1,5 @@
 import styles from "../styles/Performance.module.css";
+import Temp from "../components/Temp";
 import React, { useState } from "react";
 
 const Performance = () => {
@@ -6,16 +7,10 @@ const Performance = () => {
 
   const handleClick = () => {
     const mainBox = [];
-    for (let i = 0; i < 1000; i++) {
-      const newElement = React.createElement(
-        "h1",
-        {},
-        "This is just another line!"
-      );
-      mainBox.push(newElement);
+    for (let i = 0; i < 10000; i++) {
+      mainBox.push(<Temp></Temp>);
     }
     setElementBox(mainBox);
-    console.log(mainBox);
   };
 
   const display = () => {
@@ -31,7 +26,10 @@ const Performance = () => {
       <button onClick={handleClick} className={styles.clickButton}>
         Add
       </button>
-      {display()}
+      <div className={styles.textbox}>
+        <div>Element List</div>
+        {display()}
+      </div>
     </div>
   );
 };

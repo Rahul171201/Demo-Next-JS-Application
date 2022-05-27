@@ -1,3 +1,9 @@
+.performanceBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .clickButton{
     margin: 20px 20px;
     width: 80px;
@@ -9,4 +15,15 @@
 }
 .clickButton:hover{
     background-color: green;
+}
+
+.textbox{
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    height: min-content;
+    border: 1px solid black;
+    margin: 20px;
+    justify-content: center;
+    align-items: center;
 }
