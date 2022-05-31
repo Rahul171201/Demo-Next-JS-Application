@@ -1,7 +1,21 @@
+.mainbox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .image{
     width: 200px;
     height: 200px;
     border-radius: 100%;
     object-fit: cover;
     margin: 50px;
+}
+
+.renderBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
