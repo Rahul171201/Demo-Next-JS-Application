@@ -17,6 +17,15 @@
     background-color: green;
 }
 
+.cpuUsageButton{
+    width: 150px;
+    height: 40px;
+    border: none;
+    border-radius: 9px;
+    background-color: #F24C4C;
+    cursor: pointer;
+}
+
 .textbox{
     display: flex;
     flex-direction: column;
@@ -27,3 +36,4 @@
     justify-content: center;
     align-items: center;
 }
+

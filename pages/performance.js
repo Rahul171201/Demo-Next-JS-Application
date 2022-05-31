@@ -21,11 +21,27 @@ const Performance = () => {
     return displayBox;
   };
 
+  const handleCPU = () => {
+    console.log("System information : " + navigator.userAgent);
+    console.log("CPU Information : ");
+
+    console.log(chrome.system);
+
+    chrome.system.cpu.getInfo(function (cpuInfo) {
+      console.log(cpuInfo.modelName);
+      console.log(cpuInfo.archName);
+      console.log(cpuInfo.features);
+    });
+  };
+
   return (
     <div className={styles.performanceBox}>
       <h1>Performance</h1>
       <button onClick={handleClick} className={styles.clickButton}>
         Add
+      </button>
+      <button onClick={handleCPU} className={styles.cpuUsageButton}>
+        Get CPU Usage
       </button>
       <div className={styles.textbox}>
         <div>Element List</div>
