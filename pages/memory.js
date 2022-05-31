@@ -22,6 +22,14 @@ const Memory = () => {
     setElementBox("");
   };
 
+  const fetchMemoryDetails = () => {
+    // jsHeapSizeLimit -> the amount of memory that JavaScript heap is limited to
+    // usedJSHeapSize -> the amount of memory that JavaScript has allocated (including free space)
+    // totalJSHeapSize -> the amount of memory currently being used
+
+    console.log(performance.memory);
+  };
+
   return (
     <div className={styles.memoryBox}>
       <h1>Memory</h1>
@@ -31,6 +39,9 @@ const Memory = () => {
         </button>
         <button className={styles.removeButton} onClick={removeElements}>
           Remove
+        </button>
+        <button className={styles.memoryButton} onClick={fetchMemoryDetails}>
+          Memory
         </button>
       </div>
       <div className={styles.textbox}>
