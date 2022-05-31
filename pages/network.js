@@ -39,7 +39,9 @@ const Network = ({ val }) => {
       </Head>
       <div className={styles.mainbox}>
         <h1>Network</h1>
-        <button onClick={fetch_resource_timings}>Fetch Resource Details</button>
+        <button onClick={fetch_resource_timings} className={styles.fetchButton}>
+          Fetch Resource Details
+        </button>
         <div className={styles.imageBox}>
           <img
             src="https://images.fineartamerica.com/images-medium-large-5/water-drop-on-peacock-feather-miragec.jpg"

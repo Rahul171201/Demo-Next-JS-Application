@@ -12,7 +12,7 @@ const Memory = () => {
 
     for (let i = 0; i < 10000; i++) {
       arr.push(<Temp></Temp>);
-      elementList.push(<Temp className={styles.temp}></Temp>);
+      elementList.push(<Temp className={styles.temp} key={i}></Temp>);
     }
 
     setElementBox(elementList);
@@ -24,6 +24,7 @@ const Memory = () => {
 
   return (
     <div className={styles.memoryBox}>
+      <h1>Memory</h1>
       <div className={styles.buttonBox}>
         <button className={styles.addButton} onClick={addElements}>
           Add

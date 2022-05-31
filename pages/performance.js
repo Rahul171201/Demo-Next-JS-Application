@@ -16,13 +16,14 @@ const Performance = () => {
   const display = () => {
     const displayBox = [];
     for (let i = 0; i < elementBox.length; i++) {
-      displayBox.push(<div>{elementBox[i]}</div>);
+      displayBox.push(<div key={i}>{elementBox[i]}</div>);
     }
     return displayBox;
   };
 
   return (
     <div className={styles.performanceBox}>
+      <h1>Performance</h1>
       <button onClick={handleClick} className={styles.clickButton}>
         Add
       </button>

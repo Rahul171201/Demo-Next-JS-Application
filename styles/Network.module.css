@@ -19,3 +19,16 @@
     justify-content: center;
     align-items: center;
 }
+
+.fetchButton{
+    width: 120px;
+    height: 50px;
+    border: none;
+    border-radius: 9px;
+    color: white;
+    cursor: pointer;
+    background-color: red;
+}
+.fetchButton:hover{
+    background-color: #990000;
+}
