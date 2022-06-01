@@ -20,13 +20,14 @@ const Network = ({ val }) => {
     ) {
       console.log("Resource Timing API not supported");
     } else {
-      console.log("The requests which took more than 20ms are : ");
+      console.log("The requests which took more than 50ms are : ");
       let resources = window.performance.getEntriesByType("resource");
       for (let i = 0; i < resources.length; i++) {
-        if (resources[i].duration > 20.0) {
+        if (resources[i].duration > 50.0) {
           console.log("Url of the resource : " + resources[i].name);
           console.log("Type : " + resources[i].entryType);
           console.log("Initiated By : " + resources[i].initiatorType);
+          // console.log("Duration : " + resources[i].duration);
         }
       }
     }

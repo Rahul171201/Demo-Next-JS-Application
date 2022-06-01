@@ -1,6 +1,7 @@
 import styles from "../styles/Performance.module.css";
 import Temp from "../components/Temp";
 import React, { useState } from "react";
+import Head from "next/head";
 
 const Performance = () => {
   const [elementBox, setElementBox] = useState([]);
@@ -36,6 +37,9 @@ const Performance = () => {
 
   return (
     <div className={styles.performanceBox}>
+      <Head>
+        <title>App Test | Performance</title>
+      </Head>
       <h1>Performance</h1>
       <button onClick={handleClick} className={styles.clickButton}>
         Add
