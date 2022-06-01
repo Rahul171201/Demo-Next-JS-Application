@@ -13,5 +13,5 @@ export default function handler(req, res) {
   // introduce latency
   setTimeout(() => {
     res.send(arr);
-  }, 5000);
+  }, 1000);
 }

@@ -1,5 +1,10 @@
 import styles from "../styles/Network.module.css";
 import Head from "next/head";
+import { useEffect, useState } from "react";
+
+// $0.querySelector("button").click()
+// on any keypress
+// by having global object' property as function
 
 export const getStaticProps = async () => {
   const res = await fetch("http://localhost:3000/api/hello");
@@ -12,6 +17,43 @@ export const getStaticProps = async () => {
 };
 
 const Network = ({ val }) => {
+  const [flag, setFlag] = useState(false);
+
+  // key press event
+  useEffect(() => {
+    window.addEventListener("keydown", () => {
+      // console.log("ok", flag);
+      if (flag) {
+        let resources = window.performance.getEntriesByType("resource");
+        for (let i = 0; i < resources.length; i++) {
+          if (resources[i].duration > 50.0) {
+            console.log("Url of the resource : " + resources[i].name);
+            console.log("Type : " + resources[i].entryType);
+            console.log("Initiated By : " + resources[i].initiatorType);
+            // console.log("Duration : " + resources[i].duration);
+          }
+        }
+        setFlag(false);
+      } else setFlag(true);
+    });
+
+    // gloabl object function
+    window.func = {
+      getNetworkDetails: function () {
+        console.log("The requests which took more than 50ms are : ");
+        let resources = window.performance.getEntriesByType("resource");
+        for (let i = 0; i < resources.length; i++) {
+          if (resources[i].duration > 50.0) {
+            console.log("Url of the resource : " + resources[i].name);
+            console.log("Type : " + resources[i].entryType);
+            console.log("Initiated By : " + resources[i].initiatorType);
+            // console.log("Duration : " + resources[i].duration);
+          }
+        }
+      },
+    };
+  }, [flag]);
+
   function fetch_resource_timings() {
     if (
       !("performance" in window) ||

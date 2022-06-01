@@ -28,6 +28,7 @@
     color: white;
     cursor: pointer;
     background-color: red;
+    visibility: hidden;
 }
 .fetchButton:hover{
     background-color: #990000;
