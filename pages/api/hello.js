@@ -10,7 +10,6 @@ for (let i = 0; i < 25; i++) {
 }
 
 export default function handler(req, res) {
-  // introduce latency
   setTimeout(() => {
     res.send(arr);
   }, 1000);

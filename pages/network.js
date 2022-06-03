@@ -16,8 +16,22 @@ export const getStaticProps = async () => {
   };
 };
 
+const testFunc = () => {
+  const final_data = [];
+  setInterval(async () => {
+    const res = await fetch("http://localhost:3000/api/roundtrip");
+    const data = await res.json();
+    final_data.push(data);
+    // console.log(data);
+  }, 3000);
+
+  return final_data;
+};
+
 const Network = ({ val }) => {
   const [flag, setFlag] = useState(false);
+
+  testFunc();
 
   // key press event
   useEffect(() => {
@@ -37,8 +51,8 @@ const Network = ({ val }) => {
       } else setFlag(true);
     });
 
-    // gloabl object function
-    window.func = {
+    // global object function
+    window.getNetworkStats = {
       getNetworkDetails: function () {
         console.log("The requests which took more than 50ms are : ");
         let resources = window.performance.getEntriesByType("resource");
@@ -52,6 +66,17 @@ const Network = ({ val }) => {
         }
       },
     };
+
+    // Network Information API
+    // setInterval(() => {
+    //   let connection = navigator.connection;
+    //   let downlink = connection.downlink; // effective bandwidth estimate in megabits per second
+    //   let type = connection.effectiveType; // effective type of connection
+    //   let rtt = connection.rtt; // estimated effective round-trip time of the current connection
+    //   console.log("Downlink : " + downlink);
+    //   console.log("Effective Type: " + type);
+    //   console.log("Round trip time: " + rtt);
+    // }, 2000);
   }, [flag]);
 
   function fetch_resource_timings() {
@@ -75,6 +100,23 @@ const Network = ({ val }) => {
     }
   }
 
+  function getRTT() {
+    if (
+      !("performance" in window) ||
+      !("getEntriesByType" in window.performance) ||
+      !(window.performance.getEntriesByType("resource") instanceof Array)
+    ) {
+      console.log("Resource Timing API not supported");
+    } else {
+      let resources = window.performance.getEntriesByType("resource");
+      for (let i = 0; i < resources.length; i++) {
+        if (resources[i].name === "http://localhost:3000/api/roundtrip") {
+          console.log(resources[i].duration);
+        }
+      }
+    }
+  }
+
   return (
     <div>
       <Head>
@@ -82,7 +124,7 @@ const Network = ({ val }) => {
       </Head>
       <div className={styles.mainbox}>
         <h1>Network</h1>
-        <button onClick={fetch_resource_timings} className={styles.fetchButton}>
+        <button onClick={getRTT} className={styles.fetchButton}>
           Fetch Resource Details
         </button>
         <div className={styles.imageBox}>
