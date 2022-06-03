@@ -1,6 +1,7 @@
 import styles from "../styles/Network.module.css";
 import Head from "next/head";
 import { useEffect, useState } from "react";
+import Graph from "../components/Graph";
 
 // $0.querySelector("button").click()
 // on any keypress
@@ -30,6 +31,7 @@ const testFunc = () => {
 
 const Network = ({ val }) => {
   const [flag, setFlag] = useState(false);
+  const [displayGraph, setDisplayGraph] = useState(false);
 
   testFunc();
 
@@ -117,15 +119,26 @@ const Network = ({ val }) => {
     }
   }
 
+  function alterGraph() {
+    console.log(displayGraph);
+    setDisplayGraph(!displayGraph);
+  }
+
   return (
     <div>
       <Head>
         <title>App Test | Network</title>
       </Head>
+      <div className={styles.graphBox}>
+        {displayGraph ? <Graph className={styles.graph}></Graph> : ""}
+      </div>
       <div className={styles.mainbox}>
         <h1>Network</h1>
         <button onClick={getRTT} className={styles.fetchButton}>
           Fetch Resource Details
+        </button>
+        <button onClick={alterGraph} className={styles.showGraph}>
+          Show Graph
         </button>
         <div className={styles.imageBox}>
           <img

@@ -33,3 +33,26 @@
 .fetchButton:hover{
     background-color: #990000;
 }
+
+.showGraph{
+    width: 120px;
+    height: 50px;
+    border: none;
+    border-radius: 9px;
+    color: white;
+    cursor: pointer;
+    background-color: red;
+    margin-top: 20px;
+    /* visibility: hidden; */
+}
+.showGraph:hover{
+    background-color: #990000;
+}
+
+.graphBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 500px;
+}
