@@ -26,10 +26,11 @@ const Graph = (props) => {
     labels: labelArray,
     datasets: [
       {
-        label: "RTT",
+        label: "Round Trip Time (RTT)",
         data: valueArray,
         backgroundColor: "red",
-        borderColor: "black",
+        borderColor: "white",
+        color: "white",
         borderWidth: 2,
       },
     ],
@@ -37,7 +38,7 @@ const Graph = (props) => {
 
   return (
     <div className={styles.mainbox}>
-      <h2>Bar Example (custom size)</h2>
+      <h2>Network delay (Round Trip Time)</h2>
       <Line data={chartData} width="700px" height="500px"></Line>
     </div>
   );
