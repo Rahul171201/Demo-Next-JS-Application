@@ -24,7 +24,7 @@ const testFunc = () => {
     const data = await res.json();
     final_data.push(data);
     // console.log(data);
-  }, 3000);
+  }, 5000);
 
   return final_data;
 };
@@ -32,8 +32,21 @@ const testFunc = () => {
 const Network = ({ val }) => {
   const [flag, setFlag] = useState(false);
   const [displayGraph, setDisplayGraph] = useState(false);
+  const [liveData, setLiveData] = useState([]);
+  const [count, setCount] = useState(0);
 
   testFunc();
+
+  useEffect(() => {
+    setInterval(() => {
+      setCount((count) => count + 1);
+      const reso = window.performance.getEntriesByType("resource").length;
+      let res = window.performance.getEntriesByType("resource").pop();
+      res.timeStamp = count;
+      setLiveData(res);
+      console.log(reso);
+    }, 1000);
+  }, []);
 
   // key press event
   useEffect(() => {
@@ -119,8 +132,12 @@ const Network = ({ val }) => {
     }
   }
 
+  function getLiveNetworkData() {
+    let resources = window.performance.getEntriesByType("resource");
+  }
+
   function alterGraph() {
-    console.log(displayGraph);
+    // console.log(displayGraph);
     setDisplayGraph(!displayGraph);
   }
 
@@ -130,7 +147,11 @@ const Network = ({ val }) => {
         <title>App Test | Network</title>
       </Head>
       <div className={styles.graphBox}>
-        {displayGraph ? <Graph className={styles.graph}></Graph> : ""}
+        {displayGraph ? (
+          <Graph className={styles.graph} live={liveData}></Graph>
+        ) : (
+          ""
+        )}
       </div>
       <div className={styles.mainbox}>
         <h1>Network</h1>
