@@ -29,23 +29,35 @@ const testFunc = () => {
   return final_data;
 };
 
+let counter = 0;
+let arr = [];
+
 const Network = ({ val }) => {
   const [flag, setFlag] = useState(false);
   const [displayGraph, setDisplayGraph] = useState(false);
   const [liveData, setLiveData] = useState([]);
-  const [count, setCount] = useState(0);
+  const [countArray, setCountArray] = useState([]);
 
   testFunc();
 
   useEffect(() => {
-    setInterval(() => {
-      setCount((count) => count + 1);
+    const timer = setInterval(() => {
+      arr.push(counter);
+      counter++;
+
+      setCountArray(arr);
       const reso = window.performance.getEntriesByType("resource").length;
+      if (reso > 200) {
+        window.performance.clearResourceTimings();
+      }
       let res = window.performance.getEntriesByType("resource").pop();
-      res.timeStamp = count;
       setLiveData(res);
       console.log(reso);
-    }, 1000);
+    }, 500);
+
+    return function stopTimer() {
+      clearInterval(timer);
+    };
   }, []);
 
   // key press event
@@ -148,7 +160,11 @@ const Network = ({ val }) => {
       </Head>
       <div className={styles.graphBox}>
         {displayGraph ? (
-          <Graph className={styles.graph} live={liveData}></Graph>
+          <Graph
+            className={styles.graph}
+            live={liveData}
+            count={countArray}
+          ></Graph>
         ) : (
           ""
         )}

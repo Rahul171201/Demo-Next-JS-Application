@@ -11,13 +11,17 @@ const Graph = (props) => {
   // if (finalArray.length >= 100) {
   //   finalArray.splice(0, 50);
   // }
+
+  const countArray = props.count;
+
   if (finalArray.length > 50) finalArray.shift();
 
-  const labelArray = finalArray.map((item) => {
-    return item.timeStamp;
-  });
+  if (countArray.length > 50) countArray.shift();
+
+  const labelArray = props.count;
   const valueArray = finalArray.map((item) => {
-    return item.duration;
+    if (item) return item.duration;
+    else return 0;
   });
 
   // console.log(finalArray[finalArray.length - 1].duration);
@@ -39,7 +43,16 @@ const Graph = (props) => {
   return (
     <div className={styles.mainbox}>
       <h2>Network delay (Round Trip Time)</h2>
-      <Line data={chartData} width="700px" height="500px"></Line>
+      <Line
+        data={chartData}
+        width="700px"
+        height="500px"
+        options={{
+          animation: {
+            duration: 0,
+          },
+        }}
+      ></Line>
     </div>
   );
 };
